@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+  {% include 'pets/components/shop/_banner.html' %}
+
+  <div class="shopify-grid">
+    <div class="container py-5 my-5">
+      <div class="row flex-md-row-reverse g-md-5 mb-5">
+
+        {% include 'pets/components/shop/_product_list.html' %}
+
+        {% include 'pets/components/shop/_aside.html' %}
+      </div>
+    </div>
+  </div>
+
+  {% include 'pets/components/_register.html' %}
+
+  {% include 'pets/components/_service.html' %}
+
+{% endblock main %}

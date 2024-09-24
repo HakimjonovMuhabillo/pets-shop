@@ -1,0 +1,315 @@
+{% extends 'base.html' %}
+
+{% block main %}
+{% include 'pets/components/product/_banner.html' %}
+
+<section id="selling-product">
+    <div class="container my-md-5 py-5">
+        <div class="row g-md-5">
+            {% include 'pets/components/product/_product_image_slider.html' %}
+
+            {% include 'pets/components/product/_product_info.html' %}
+        </div>
+    </div>
+</section>
+
+<section class="product-info-tabs py-md-5">
+    <div class="container">
+        <div class="row">
+            <div class="d-flex flex-column flex-md-row align-items-start gap-5">
+                <div class="nav flex-row flex-wrap flex-md-column nav-pills me-3 col-lg-3" id="v-pills-tab"
+                     role="tablist"
+                     aria-orientation="vertical">
+                    <button class="nav-link fs-5 mb-2 text-start active" id="v-pills-description-tab"
+                            data-bs-toggle="pill"
+                            data-bs-target="#v-pills-description" type="button" role="tab"
+                            aria-controls="v-pills-description"
+                            aria-selected="false" tabindex="-1">Description
+                    </button>
+                    <button class="nav-link fs-5 mb-2 text-start" id="v-pills-additional-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-additional" type="button" role="tab"
+                            aria-controls="v-pills-additional"
+                            aria-selected="false" tabindex="-1">Additional Information
+                    </button>
+                    <button class="nav-link fs-5 mb-2 text-start" id="v-pills-reviews-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-reviews" type="button" role="tab" aria-controls="v-pills-reviews"
+                            aria-selected="true">Customer Reviews
+                    </button>
+                </div>
+                <div class="tab-content col-9" id="v-pills-tabContent">
+                    <div class="tab-pane fade active show" id="v-pills-description" role="tabpanel"
+                         aria-labelledby="v-pills-description-tab" tabindex="0">
+                        <h2>Product Description</h2>
+                        <p>{{ product.description }}</p>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-additional" role="tabpanel"
+                         aria-labelledby="v-pills-additional-tab"
+                         tabindex="0">
+                        <h2>How to Use the Product</h2>
+                        <p>{{ product.information }}</p>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-reviews" role="tabpanel"
+                         aria-labelledby="v-pills-reviews-tab"
+                         tabindex="0">
+                        <div class="review-box d-flex flex-wrap">
+                            {% for review in reviews %}
+                            <div class="col-lg-6 d-flex flex-wrap gap-3">
+
+                                <div class="col-md-8">
+                                    <div class="review-content">
+                                        <div class="rating-container d-flex align-items-center">
+                                            {% if review.rating == 5 %}
+                                            <div class="rating" data-rating="3">
+                                                <svg width="24" height="24" class="text-primary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="3">
+                                                <svg width="24" height="24" class="text-primary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="3">
+                                                <svg width="24" height="24" class="text-primary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="3">
+                                                <svg width="24" height="24" class="text-primary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="3">
+                                                <svg width="24" height="24" class="text-primary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            {% elif review.rating == 4 %}
+                                            <div class="rating" data-rating="3">
+                                                <svg width="24" height="24" class="text-primary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="3">
+                                                <svg width="24" height="24" class="text-primary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="3">
+                                                <svg width="24" height="24" class="text-primary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="3">
+                                                <svg width="24" height="24" class="text-primary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="4">
+                                                <svg width="24" height="24" class="text-secondary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            {% elif review.rating == 3 %}
+                                            <div class="rating" data-rating="3">
+                                                <svg width="24" height="24" class="text-primary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="3">
+                                                <svg width="24" height="24" class="text-primary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="3">
+                                                <svg width="24" height="24" class="text-primary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="4">
+                                                <svg width="24" height="24" class="text-secondary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="4">
+                                                <svg width="24" height="24" class="text-secondary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            {% elif review.rating == 2 %}
+                                            <div class="rating" data-rating="3">
+                                                <svg width="24" height="24" class="text-primary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="3">
+                                                <svg width="24" height="24" class="text-primary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="4">
+                                                <svg width="24" height="24" class="text-secondary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="4">
+                                                <svg width="24" height="24" class="text-secondary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="4">
+                                                <svg width="24" height="24" class="text-secondary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            {% elif review.rating == 1 %}
+                                            <div class="rating" data-rating="3">
+                                                <svg width="24" height="24" class="text-primary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="4">
+                                                <svg width="24" height="24" class="text-secondary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="4">
+                                                <svg width="24" height="24" class="text-secondary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="4">
+                                                <svg width="24" height="24" class="text-secondary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="rating" data-rating="4">
+                                                <svg width="24" height="24" class="text-secondary">
+                                                    <use xlink:href="#star-solid"></use>
+                                                </svg>
+                                            </div>
+                                            {% endif %}
+                                            <span class="rating-count">({{ review.rating }})</span>
+                                        </div>
+                                        <div class="review-header">
+                                            <span class="author-name">{{ review.username }}</span>
+                                            <span class="review-date">– {{ review.date }}</span>
+                                        </div>
+                                        <p>{{ review.review }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="add-review mt-5">
+                            <h3>Add a review</h3>
+                            <p>Your email address will not be published. Required fields are marked *</p>
+                            <form id="form" class="form-group" method="post" enctype="multipart/form-data" action="{% url 'save_review' product.pk %}">
+
+                                {% csrf_token %}
+                                {{ review_form.as_p }}
+                                <button type="submit" name="submit"
+                                        class="btn btn-dark btn-large text-uppercase w-100">Submit
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.star-rating {
+    direction: ltr; /* Change to left-to-right to ensure correct behavior */
+    display: inline-flex;
+    position: relative;
+}
+
+.star-rating input[type="radio"] {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 2rem;
+    color: #ddd; /* Default color for unselected stars */
+    cursor: pointer;
+    margin: 0 0.75rem;
+    transition: color 0.2s ease-in-out;
+    position: relative;
+}
+
+.star-rating label::before {
+    content: "\2605"; /* Unicode character for a star */
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.star-rating input[type="radio"]:checked ~ label {
+    color: #ddd; /* Reset color of all stars after the checked one */
+}
+
+.star-rating input[type="radio"]:checked + label,
+.star-rating input[type="radio"]:checked + label ~ label {
+    color: #ffcc00; /* Yellow color for selected star and all previous ones */
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #ffcc00; /* Highlight stars on hover */
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const stars = document.querySelectorAll('.star-rating label');
+
+    stars.forEach(star => {
+        star.addEventListener('mouseover', function() {
+            resetStars();
+            this.style.color = '#ffcc00';
+            let prevSibling = this.previousElementSibling;
+            while (prevSibling) {
+                prevSibling.style.color = '#ffcc00';
+                prevSibling = prevSibling.previousElementSibling;
+            }
+        });
+
+        star.addEventListener('mouseout', function() {
+            resetStars();
+            const checkedStar = document.querySelector('.star-rating input[type="radio"]:checked');
+            if (checkedStar) {
+                highlightStars(checkedStar.parentNode);
+            }
+        });
+
+        star.addEventListener('click', function() {
+            resetStars();
+            highlightStars(this);
+        });
+    });
+
+    function resetStars() {
+        stars.forEach(star => star.style.color = '#ddd');
+    }
+
+    function highlightStars(star) {
+        star.style.color = '#ffcc00';
+        let prevSibling = star.previousElementSibling;
+        while (prevSibling) {
+            prevSibling.style.color = '#ffcc00';
+            prevSibling = prevSibling.previousElementSibling;
+        }
+    }
+});
+</script>
+
+{% include 'pets/components/_register.html' %}
+
+{% include 'pets/components/_service.html' %}
+
+
+
+{% endblock main %}

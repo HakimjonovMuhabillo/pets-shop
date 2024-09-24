@@ -1,0 +1,66 @@
+{% load pets_tags %}
+<main class="col-md-9">
+    <div class="filter-shop d-md-flex justify-content-between align-items-center">
+        <div class="showing-product">
+            <p class="m-0">Showing 1–{{ products.paginator.count }} of {{ products_count }} results</p>
+        </div>
+        <div class="sort-by">
+            <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    {% if request.GET.sort == 'title' %}
+                    Name (A - Z)
+                    {% elif request.GET.sort == '-title' %}
+                    Name (Z - A)
+                    {% elif request.GET.sort == 'price' %}
+                    Price (Low-High)
+                    {% elif request.GET.sort == '-price' %}
+                    Price (High-Low)
+                    {% else %}
+                    Default sorting
+                    {% endif %}
+                </button>
+                <ul class="dropdown-menu">
+                    {% get_sorters as sorters %}
+                    <li><a class="dropdown-item" href="{% url 'shop' %}">Default sorting</a></li>
+                    {% for sorter in sorters %}
+                    <li><a class="dropdown-item" href="?{% query_transform request 'sort' sorter.0 %}">{{ sorter.1 }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-grid row ">
+        {% for product in products %}
+        <div class="col-md-4 my-4">
+            {% include 'pets/components/_product_card.html' %}
+        </div>
+        {% endfor %}
+
+    </div>
+    <!-- / product-grid -->
+
+    <nav class="navigation paging-navigation text-center mt-5" role="navigation">
+        <div class="pagination loop-pagination d-flex justify-content-center align-items-center">
+            {% if products.has_previous %}
+            <a href="?{% query_transform request 'page' products.previous_page_number %}" class="pagination-arrow d-flex align-items-center mx-3">
+                <iconify-icon icon="ic:baseline-keyboard-arrow-left" class="pagination-arrow fs-1"></iconify-icon>
+            </a>
+            {% endif %}
+            {% for page in products.paginator.page_range %}
+            {% if products.number == page %}
+            <span aria-current="page" class="page-numbers mt-2 fs-3 mx-3 current">{{ page }}</span>
+            {% else %}
+            <a class="page-numbers mt-2 fs-3 mx-3" href="?{% query_transform request 'page' page %}">{{ page }}</a>
+            {% endif %}
+            {% endfor %}
+            {% if products.has_next %}
+            <a href="?{% query_transform request 'page' products.next_page_number %}" class="pagination-arrow d-flex align-items-center mx-3">
+                <iconify-icon icon="ic:baseline-keyboard-arrow-right" class="pagination-arrow fs-1"></iconify-icon>
+            </a>
+            {% endif %}
+        </div>
+    </nav>
+
+</main>

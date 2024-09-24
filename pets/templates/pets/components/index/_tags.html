@@ -1,0 +1,38 @@
+{% load pets_tags %}
+{% for tag in tags %}
+  <section id="foodies" class="my-5">
+    <div class="container my-5 py-5">
+      <div class="section-header d-md-flex justify-content-between align-items-center">
+        <h2 class="display-3 fw-normal">Pet {{ tag.title }}</h2>
+        <div class="mb-4 mb-md-0">
+          <p class="m-0">
+            {% get_categories as categories %}
+            <button class="filter-button me-4  active" data-filter="*">ALL</button>
+            {% for category in categories %}
+            <button class="filter-button me-4 " data-filter=".{{ category.title }}{{ forloop.parentloop.counter }}">{{ category.title|upper }}</button>
+            {% endfor %}
+          </p>
+        </div>
+        <div>
+          <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1">
+            shop now
+            <svg width="24" height="24" viewBox="0 0 24 24" class="mb-1">
+              <use xlink:href="#arrow-right"></use>
+            </svg></a>
+        </div>
+      </div>
+
+      <div class="isotope-container row">
+
+        {% for product in tag.product_set.all|slice:"8" %}
+        <div class="item {{ product.category.title }}{{ forloop.parentloop.counter }} col-md-4 col-lg-3 my-4">
+          {% include 'pets/components/_product_card.html' %}
+        </div>
+        {% endfor %}
+
+      </div>
+
+
+    </div>
+  </section>
+{% endfor %}

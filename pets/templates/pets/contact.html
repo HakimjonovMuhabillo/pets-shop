@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block main %}
+  <section id="banner" class="py-3" style="background: #F9F3EC;">
+    <div class="container">
+      <div class="hero-content py-5 my-3">
+        <h2 class="display-1 mt-3 mb-0">Contact</h2>
+        <nav class="breadcrumb">
+          <a class="breadcrumb-item nav-link" href="#">Home</a>
+          <a class="breadcrumb-item nav-link" href="#">Pages</a>
+          <span class="breadcrumb-item active" aria-current="page">Contact</span>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-us">
+    <div class="container py-5 my-5">
+      <div class="row">
+        <div class="contact-info col-lg-6 pb-3">
+          <h2 class="text-dark">Contact Information</h2>
+          <p>Tortor dignissim convallis aenean et tortor at risus viverra adipiscing.</p>
+          <div class="page-content d-flex flex-wrap mt-5">
+            <div class="col-lg-6 col-sm-12">
+              <div class="content-box text-dark pe-4 mb-5">
+                <h4 class="card-title">Office</h4>
+                <div class="contact-address pt-3">
+                  <p>730 Glenstone Ave 65802, Springfield, US</p>
+                </div>
+                <div class="contact-number">
+                  <p>
+                    <a href="#">+123 987 321</a>
+                  </p>
+                  <p>
+                    <a href="#">+123 123 654</a>
+                  </p>
+                </div>
+                <div class="email-address">
+                  <p>
+                    <a href="#">contact@website.com</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+              <div class="content-box">
+                <h4 class="card-title">Management</h4>
+                <div class="contact-address pt-3">
+                  <p>730 Glenstone Ave 65802, Springfield, US</p>
+                </div>
+                <div class="contact-number">
+                  <p>
+                    <a href="#">+123 987 321</a>
+                  </p>
+                  <p>
+                    <a href="#">+123 123 654</a>
+                  </p>
+                </div>
+                <div class="email-address">
+                  <p>
+                    <a href="#">contact@website.com</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="inquiry-item col-lg-6">
+          <div class="rounded-5">
+            <h2 class="text-dark">Get in Touch</h2>
+            <p>Use the form below to get in touch with us.</p>
+            <form id="form" class="form-group flex-wrap" method="post">
+              {% csrf_token %}
+              <div class="form-input col-lg-12 d-flex mb-3">
+                {{ form.name }}
+                {{ form.email }}
+              </div>
+              <div class="col-lg-12 mb-3">
+                {{ form.phone }}
+              </div>
+              <div class="col-lg-12 mb-3">
+                {{ form.subject }}
+              </div>
+              <div class="col-lg-12 mb-3">
+                {{ form.message }}
+              </div>
+            <div class="d-grid">
+              <button class="btn btn-dark btn-lg rounded-1">Submit</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock main %}

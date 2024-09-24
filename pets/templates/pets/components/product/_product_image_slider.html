@@ -1,0 +1,39 @@
+<div class="col-lg-6">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- product-large-slider -->
+            <div class="swiper product-large-slider">
+                <div class="swiper-wrapper">
+                    {% for image in product.images.all %}
+                    <div class="swiper-slide">
+                        <img src="{{ image.image.url }}" class="img-fluid" height="300px"/>
+                    </div>
+                    {% empty %}
+                    <div class="swiper-slide">
+                        <img src="{{ product.get_first_image }}" class="img-fluid"/>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 mt-2">
+            <!-- product-thumbnail-slider -->
+            <div thumbsSlider="" class="swiper product-thumbnail-slider">
+                <div class="swiper-wrapper">
+                    {% for image in product.images.all %}
+                    <div class="swiper-slide">
+                        <img src="{{ image.image.url }}" class="img-fluid"/>
+                    </div>
+                    {% empty %}
+                    <div class="swiper-slide">
+                        <img src="{{ product.get_first_image }}" class="img-fluid"/>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

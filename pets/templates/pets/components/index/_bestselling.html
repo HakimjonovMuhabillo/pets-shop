@@ -1,0 +1,29 @@
+  <section id="bestselling" class="my-5 overflow-hidden">
+    <div class="container py-5 mb-5">
+
+      <div class="section-header d-md-flex justify-content-between align-items-center mb-3">
+        <h2 class="display-3 fw-normal">Best selling products</h2>
+        <div>
+          <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1">
+            shop now
+            <svg width="24" height="24" viewBox="0 0 24 24" class="mb-1">
+              <use xlink:href="#arrow-right"></use>
+            </svg></a>
+        </div>
+      </div>
+
+      <div class=" swiper bestselling-swiper">
+        <div class="swiper-wrapper">
+          {% for product in products %}
+          <div class="swiper-slide">
+            {% include 'pets/components/_product_card.html' %}
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+      <!-- / category-carousel -->
+
+
+    </div>
+  </section>

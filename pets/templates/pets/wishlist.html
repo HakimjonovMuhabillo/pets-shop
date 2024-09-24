@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block main %}
+  <section id="banner" class="py-3" style="background: #F9F3EC;">
+    <div class="container">
+      <div class="hero-content py-5 my-3">
+        <h2 class="display-1 mt-3 mb-0">Wishlist</h2>
+        <nav class="breadcrumb">
+          <a class="breadcrumb-item nav-link" href="#">Home</a>
+          <a class="breadcrumb-item nav-link" href="#">Pages</a>
+          <span class="breadcrumb-item active" aria-current="page">Wishlist</span>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <section id="Wishlist" class="py-5 my-5">
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="card-title text-uppercase">Product</th>
+            <th scope="col" class="card-title text-uppercase">Unit Price</th>
+            <th scope="col" class="card-title text-uppercase">Stock Status</th>
+            <th scope="col" class="card-title text-uppercase"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for product in products %}
+          <tr>
+            <td class="py-4">
+              <div class="cart-info d-flex flex-wrap align-items-center ">
+                <div class="col-lg-3">
+                  <div class="card-image">
+                    <img src="{{ product.get_first_image }}" width="50%" alt="cloth" class="img-fluid">
+                  </div>
+                </div>
+                <div class="col-lg-9">
+                  <div class="card-detail ps-3">
+                    <h5 class="card-title">
+                      <a href="#" class="text-decoration-none">{{ product.title }}</a>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td class="py-4 align-middle">
+              <div class="total-price">
+                <span class="secondary-font fw-medium">${{ product.get_discount_price }}</span>
+              </div>
+            </td>
+            <td class="py-4 align-middle">
+              <div class="total-price">
+                {% if product.in_stock > 0 %}
+                <span class="secondary-font fw-medium">In Stoke</span>
+                {% else %}
+                <span class="secondary-font fw-medium">Out of Stoke</span>
+                {% endif %}
+              </div>
+            </td>
+            <td class="py-4 align-middle">
+              <div class="d-flex align-items-center">
+                <div class="me-4"><button class="btn btn-dark p-3 text-uppercase fs-6 btn-rounded-none w-100">Add to
+                    cart</button></div>
+                <div class="cart-remove">
+                  <a href="{% url 'wishlist_action' product.pk %}">
+                    <svg width="24" height="24">
+                      <use xlink:href="#trash"></use>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  {% include 'pets/components/_register.html' %}
+
+  {% include 'pets/components/_service.html' %}
+
+{% endblock main %}

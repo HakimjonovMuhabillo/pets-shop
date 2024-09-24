@@ -1,0 +1,46 @@
+{% load pets_tags %}
+{% if product.discount > 0 %}
+<div class="z-1 position-absolute rounded-3 m-3 px-3 border border-dark-subtle">
+    -{{ product.discount }}%
+</div>
+{% endif %}
+<div class="card position-relative">
+    <a href="{% url 'product' product.slug %}"><img src="{{ product.get_first_image }}" class=" rounded-4"
+                                                    height="250px" alt="image"></a>
+    <div class="card-body p-0">
+        <a href="{% url 'product' product.slug %}">
+            <h3 class="card-title pt-4 m-0">{{ product.title|truncatechars:20 }}</h3>
+        </a>
+
+        <div class="card-text">
+                <span class="rating secondary-font">
+                  <iconify-icon icon="clarity:star-solid" class="text-primary"></iconify-icon>
+                  <iconify-icon icon="clarity:star-solid" class="text-primary"></iconify-icon>
+                  <iconify-icon icon="clarity:star-solid" class="text-primary"></iconify-icon>
+                  <iconify-icon icon="clarity:star-solid" class="text-primary"></iconify-icon>
+                  <iconify-icon icon="clarity:star-solid" class="text-primary"></iconify-icon>
+                  5.0</span>
+
+            <h3 class="secondary-font text-primary">${{ product.get_discount_price }}</h3>
+
+            <div class="d-flex flex-wrap mt-3">
+                <a href="#" class="btn-cart me-3 px-4 pt-3 pb-3">
+                    <h5 class="text-uppercase m-0">Add to Cart</h5>
+                </a>
+                {% if request.user.is_authenticated %}
+                {% check_wishlist request product.pk as wish %}
+                <a href="{% url 'wishlist_action' product.pk %}" class="btn-wishlist px-4 pt-3 ">
+                    {% if wish %}
+                    <iconify-icon icon="fluent:heart-28-filled" class="fs-5"></iconify-icon>
+                    {% else %}
+                    <iconify-icon icon="fluent:heart-28-regular" class="fs-5"></iconify-icon>
+                    {% endif %}
+                </a>
+                {% endif %}
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
